@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel = "stylesheet" href="{% static 'norbu.css' %}"
+</head>
+<body>
+
+<div class="header">
+  <h2>Norbu's Daily Blog</h2>
+  <div class="grid-fix">
+    <a href="add"><button class= 'button' type = "submit">New Blog</button> </a>
+    <a href="admin"><button class= 'button' type = "submit" style="background-color: lightcoral;">Admin Panel</button> </a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    {% for post in posts reversed %}
+        <div class = "card">
+            <a style= "text-decoration: none; color: black" href ="/post/{{post.id}}">
+                <h2>{{post.title}}</h2>
+                <h5> {{post.created_at}}</h5>
+                <p> {{post.remarks|truncatewords:8}}</p>
+            </a>
+        </div>
+        {% endfor %}
+  </div>
+</div>
+
+</body>
+</html>

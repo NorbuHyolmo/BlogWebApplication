@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+.header {
+  padding: 2px;
+  font-size: 40px;
+  text-align: center;
+  background: white;
+}
+
+.leftcolumn {   
+  float: left;
+  width: 100%;
+}
+
+.card {
+   background-color: white;
+   padding: 20px;
+   margin-top: 20px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.card .wrap-it pre{
+  text-align: justify; 
+  margin: 0px 60px;
+  display: inline-block;
+  word-wrap: break-word;
+  font-size: 12px;
+}
+
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5%;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+  }
+
+p{
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  text-align: justify;
+  margin: 5px 30px;
+}
+
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h2>Norbu's Daily Blog</h2>
+  <a href="{% url 'index'%}"><button class= 'button' type = "submit"> ⇦ Go Back</button> </a>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+        <div class = "card">
+                <h1>{{posts.title}}</h1>
+                <p > <b> Woke up at: {{posts.wake_up}}</b></p>
+                <p> <b>Coding Hours : {{posts.coding_hours_start}} to {{posts.coding_hours_end}} </b></p>
+                <p> <b>Exercise : {{posts.exercise}} </b></p>
+                <div class = "wrap-it">
+                <p>{{posts.remarks}}</p>
+                </div>
+                <h4> Created at: {{posts.created_at}}</h4>
+                <a href="{% url 'update' posts.id%}"> <button  style=" background-color: yellowgreen" type="submit" class="button">Update</button></a>
+                <a href="delete/{{posts.id}}"> <button  style=" background-color: lightcoral" type="submit" class="button">Delete</button></a>
+                
+        </div>
+  </div>
+</div>
+
+</body>
+</html>

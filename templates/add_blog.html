@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Blog</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial;
+            padding: 20px;
+            background: #f1f1f1;
+        }
+
+        .card {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+            width: 90%;
+            position: absolute; 
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+    <form method="POST" action="add_blog">
+        {% csrf_token %}
+            <p> Title: </p>
+            <input type="text" name="title">
+            <p> Wake-up Time: </p>
+            <input type="time" name="wake_up">
+            <p>Coding Hours: </p>
+            <input type="time" name="coding_hours">  &emsp;to &emsp; <input type="time" name="coding_hours">
+            <p> Exercise </p>
+            <select id = "myAns" onchange = "verifyAnswer()" >  
+                <option value="choose"> --Choose -- </option>  
+                <option value="yes"> Done </option>  
+                <option value="no"> Skipped Today </option>  
+            </select>  
+            <p> Remarks</p>
+            <textarea name = "remarks" style="height: 230px; width: 515px;">
+            </textarea>
+
+    </form>
+</div>
+</body>
+
+</html>
